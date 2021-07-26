@@ -71,29 +71,29 @@ def get_model(hyper_params):
     #
     input = Input(shape=(None, None, 3))
     # First conv layer
-    first_conv = Conv2D(24, (5,5), strides=2, padding="same", activation="relu")(input)
+    first_conv = Conv2D(12, (5,5), strides=2, padding="same", activation="relu")(input)
     # First blaze block
-    single_1 = blaze_block(first_conv, 24)
+    single_1 = blaze_block(first_conv, 12)
     # Second blaze block
-    single_2 = blaze_block(single_1, 24)
+    single_2 = blaze_block(single_1, 12)
     # Third blaze block
-    single_3 = blaze_block(single_2, 48, 2)
+    single_3 = blaze_block(single_2, 24, 2)
     # Fourth blaze block
-    single_4 = blaze_block(single_3, 48)
+    single_4 = blaze_block(single_3, 24)
     # Fifth blaze block
-    single_5 = blaze_block(single_4, 48)
+    single_5 = blaze_block(single_4, 24)
     # First double blaze block
-    double_1 = double_blaze_block(single_5, [24, 96], 2)
+    double_1 = double_blaze_block(single_5, [12, 48], 2)
     # Second double blaze block
-    double_2 = double_blaze_block(double_1, [24, 96])
+    double_2 = double_blaze_block(double_1, [12, 48])
     # Third double blaze block
-    double_3 = double_blaze_block(double_2, [24, 96])
+    double_3 = double_blaze_block(double_2, [12, 48])
     # Fourth double blaze block
-    double_4 = double_blaze_block(double_3, [24, 96], 2)
+    double_4 = double_blaze_block(double_3, [12, 48], 2)
     # Fifth double blaze block
-    double_5 = double_blaze_block(double_4, [24, 96])
+    double_5 = double_blaze_block(double_4, [12, 48])
     # Sixth double blaze block
-    double_6 = double_blaze_block(double_5, [24, 96])
+    double_6 = double_blaze_block(double_5, [12, 48])
     #
     double_3_labels = Conv2D(detections_per_layer[0], (3, 3), padding="same")(double_3)
     double_6_labels = Conv2D(detections_per_layer[1], (3, 3), padding="same")(double_6)

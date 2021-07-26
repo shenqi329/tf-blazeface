@@ -51,7 +51,7 @@ def get_step_size(total_items, batch_size):
     outputs:
         step_size = number of step size for model training
     """
-    return math.ceil(total_items / batch_size)
+    return total_items // batch_size
 
 def generator(dataset, prior_boxes, hyper_params):
     """Tensorflow data generator for fit method, yielding inputs and outputs.
